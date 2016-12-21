@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.Web", "SurferTech.Web\SurferTech.Web.csproj", "{EBAC9ACA-CDB0-479B-B382-F255BA05AABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.Web.Models", "SurferTech.Web.Models\SurferTech.Web.Models.csproj", "{BCA75BAA-483E-453C-8BC1-A3843078B536}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{70528D58-81A8-41C6-9D87-A3D7CDBDA3ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.Web.Controllers", "SurferTech.Web.Controllers\SurferTech.Web.Controllers.csproj", "{AE6CE61C-F8C5-4DE1-875D-1BE163F0A894}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.Utils", "..\1.Common\SurferTech.Utils\SurferTech.Utils.csproj", "{88FF371D-BE12-469B-BEFB-654D8DCCA8C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.ServiceProxy", "..\1.Common\SurferTech.ServiceProxy\SurferTech.ServiceProxy.csproj", "{186D9347-AC05-4EEA-813C-819F62759AEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBAC9ACA-CDB0-479B-B382-F255BA05AABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBAC9ACA-CDB0-479B-B382-F255BA05AABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBAC9ACA-CDB0-479B-B382-F255BA05AABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBAC9ACA-CDB0-479B-B382-F255BA05AABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCA75BAA-483E-453C-8BC1-A3843078B536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCA75BAA-483E-453C-8BC1-A3843078B536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCA75BAA-483E-453C-8BC1-A3843078B536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCA75BAA-483E-453C-8BC1-A3843078B536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE6CE61C-F8C5-4DE1-875D-1BE163F0A894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE6CE61C-F8C5-4DE1-875D-1BE163F0A894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE6CE61C-F8C5-4DE1-875D-1BE163F0A894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE6CE61C-F8C5-4DE1-875D-1BE163F0A894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88FF371D-BE12-469B-BEFB-654D8DCCA8C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88FF371D-BE12-469B-BEFB-654D8DCCA8C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88FF371D-BE12-469B-BEFB-654D8DCCA8C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88FF371D-BE12-469B-BEFB-654D8DCCA8C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{186D9347-AC05-4EEA-813C-819F62759AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{186D9347-AC05-4EEA-813C-819F62759AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{186D9347-AC05-4EEA-813C-819F62759AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{186D9347-AC05-4EEA-813C-819F62759AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88FF371D-BE12-469B-BEFB-654D8DCCA8C7} = {70528D58-81A8-41C6-9D87-A3D7CDBDA3ED}
+		{186D9347-AC05-4EEA-813C-819F62759AEA} = {70528D58-81A8-41C6-9D87-A3D7CDBDA3ED}
+	EndGlobalSection
+EndGlobal
