@@ -1,5 +1,7 @@
 ﻿@{
-    string title = ViewBag.Title != null ? ("应用程序名称 - " + ViewBag.Title) : "应用程序名称";
+    string appName = "应用程序名称";
+    string pageTitle = ViewBag.Title != null && ViewBag.Title != "首页" ? (ViewBag.Title + " - " + appName) : appName;
+    string headTitle = ViewBag.Title != null && ViewBag.Title != "首页" ? (appName + " - " + ViewBag.Title) : appName;
 }
 <!DOCTYPE html>
 <html>
@@ -7,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
+    <title>@pageTitle</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -20,7 +22,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink(title, "Index", "Home", null, new { @class = "navbar-brand" })
+                @Html.ActionLink(headTitle,
+                    "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
             <p class="navbar-text navbar-right">
                 <a href="#">你好，admin</a>
