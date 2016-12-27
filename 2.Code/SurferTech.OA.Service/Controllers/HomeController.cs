@@ -10,6 +10,8 @@ namespace SurferTech.OA.Service.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Home Page";
+
             return View();
         }
     }
