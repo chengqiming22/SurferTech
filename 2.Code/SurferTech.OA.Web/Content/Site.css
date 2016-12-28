@@ -2,11 +2,17 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
+.menu-content{
+    margin-top:10px;
+}
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.foot-content{
+    text-align:center;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */

@@ -21,7 +21,8 @@ namespace SurferTech.OA.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
-                      "~/Scripts/index.js"));
+                      "~/Scripts/jsPlumb-2.2.8.js",
+                      "~/Scripts/app.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
