@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "项目管理";
+}
+<div>
+    <table class="table table-responsive table-bordered table-hover">
+        <tr>
+            <th>序号</th>
+            <th>项目名称</th>
+            <th>开始日期</th>
+            <th>合作单位</th>
+            <th>状态</th>
+            <th>备注</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>一号线施工</td>
+            <td>2016-10-10</td>
+            <td>上海市政府</td>
+            <td style="color:green">施工中</td>
+            <td>test</td>
+            <td>@Html.ActionLink("详情", "Detail", new { projectId = 1 }, new { target = "_blank" })</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>一号线施工</td>
+            <td>2016-10-10</td>
+            <td>上海市政府</td>
+            <td style="color:red">返工</td>
+            <td>test</td>
+            <td>@Html.ActionLink("详情", "Detail", new { projectId = 1 }, new { target = "_blank" })</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>一号线施工</td>
+            <td>2016-10-10</td>
+            <td>上海市政府</td>
+            <td style="color:gray">已验收</td>
+            <td>test</td>
+            <td>@Html.ActionLink("详情", "Detail", new { projectId = 1 }, new { target = "_blank" })</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>一号线施工</td>
+            <td>2016-10-10</td>
+            <td>上海市政府</td>
+            <td style="color:gray">已验收</td>
+            <td>test</td>
+            <td>@Html.ActionLink("详情", "Detail", new { projectId = 1 }, new { target = "_blank" })</td>
+        </tr>
+    </table>
+</div>
