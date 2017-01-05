@@ -11,21 +11,28 @@ namespace SurferTech.OA.DataModel.Entites
         public int Id { get; set; }
 
         [Required]
-        public string UserName { get; set; }
+        [StringLength(20)]
+        public string UID { get; set; }
 
         [Required]
+        [StringLength(20)]
         public string Password { get; set; }
 
+        [Required]
         public bool IsActive { get; set; }
 
+        [StringLength(20)]
         public string RealName { get; set; }
 
+        [StringLength(20)]
         public string MobileNumber { get; set; }
 
+        [StringLength(20)]
         public string Email { get; set; }
 
+        [StringLength(100)]
         public string Remark { get; set; }
 
-        public IList<Role> Roles { get; set; }
+        public virtual IList<Role> Roles { get; set; }
     }
 }

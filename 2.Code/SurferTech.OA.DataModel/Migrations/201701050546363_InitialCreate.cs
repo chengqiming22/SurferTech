@@ -12,10 +12,10 @@ namespace SurferTech.OA.DataModel.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(unicode: false),
-                        Controller = c.String(unicode: false),
-                        Action = c.String(unicode: false),
-                        Group = c.String(unicode: false),
+                        Name = c.String(nullable: false, maxLength: 20, storeType: "nvarchar"),
+                        Controller = c.String(nullable: false, maxLength: 20, storeType: "nvarchar"),
+                        Action = c.String(nullable: false, maxLength: 20, storeType: "nvarchar"),
+                        Group = c.String(nullable: false, maxLength: 50, storeType: "nvarchar"),
                         IsDefault = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -26,9 +26,9 @@ namespace SurferTech.OA.DataModel.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Type = c.Short(nullable: false),
-                        Resource = c.String(nullable: false, unicode: false),
+                        ResourceId = c.Long(nullable: false),
                         IsActive = c.Boolean(nullable: false),
-                        Remark = c.String(unicode: false),
+                        Remark = c.String(maxLength: 100, storeType: "nvarchar"),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -37,8 +37,8 @@ namespace SurferTech.OA.DataModel.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, unicode: false),
-                        Remark = c.String(unicode: false),
+                        Name = c.String(nullable: false, maxLength: 20, storeType: "nvarchar"),
+                        Remark = c.String(maxLength: 100, storeType: "nvarchar"),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -47,13 +47,13 @@ namespace SurferTech.OA.DataModel.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserName = c.String(nullable: false, unicode: false),
-                        Password = c.String(nullable: false, unicode: false),
+                        UserName = c.String(nullable: false, maxLength: 20, storeType: "nvarchar"),
+                        Password = c.String(nullable: false, maxLength: 20, storeType: "nvarchar"),
                         IsActive = c.Boolean(nullable: false),
-                        RealName = c.String(unicode: false),
-                        MobileNumber = c.String(unicode: false),
-                        Email = c.String(unicode: false),
-                        Remark = c.String(unicode: false),
+                        RealName = c.String(maxLength: 20, storeType: "nvarchar"),
+                        MobileNumber = c.String(maxLength: 20, storeType: "nvarchar"),
+                        Email = c.String(maxLength: 20, storeType: "nvarchar"),
+                        Remark = c.String(maxLength: 100, storeType: "nvarchar"),
                     })
                 .PrimaryKey(t => t.Id);
             

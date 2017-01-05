@@ -10,13 +10,16 @@ namespace SurferTech.OA.DataModel.Entites
     {
         public int Id { get; set; }
 
+        [Required]
         public short Type { get; set; }
 
         [Required]
-        public string Resource { get; set; }
+        public long ResourceId { get; set; }
 
+        [Required]
         public bool IsActive { get; set; }
 
+        [StringLength(100)]
         public string Remark { get; set; }
     }
 }

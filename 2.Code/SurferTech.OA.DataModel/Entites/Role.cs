@@ -11,10 +11,12 @@ namespace SurferTech.OA.DataModel.Entites
         public int Id { get; set; }
 
         [Required]
+        [StringLength(20)]
         public string Name { get; set; }
 
+        [StringLength(100)]
         public string Remark { get; set; }
 
-        public IList<Permission> Permissions { get; set; }
+        public virtual IList<Permission> Permissions { get; set; }
     }
 }
