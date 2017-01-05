@@ -56,17 +56,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataEntites\OADbContext.cs" />
-    <Compile Include="DataEntites\permission.cs" />
-    <Compile Include="DataEntites\role.cs" />
-    <Compile Include="DataEntites\role_permission.cs" />
-    <Compile Include="DataEntites\user.cs" />
-    <Compile Include="DataEntites\user_role.cs" />
+    <Compile Include="DataEntites\Permission.cs" />
+    <Compile Include="DataEntites\Role.cs" />
+    <Compile Include="DataEntites\User.cs" />
+    <Compile Include="Migrations\201701050350498_InitialCreate.cs" />
+    <Compile Include="Migrations\201701050350498_InitialCreate.Designer.cs">
+      <DependentUpon>201701050350498_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201701050350498_InitialCreate.resx">
+      <DependentUpon>201701050350498_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

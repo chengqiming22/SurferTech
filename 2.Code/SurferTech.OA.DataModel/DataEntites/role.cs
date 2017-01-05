@@ -6,16 +6,15 @@ namespace SurferTech.OA.DataModel.DataEntites
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("surfertech_oa_db.role")]
-    public partial class role
+    public partial class Role
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        [StringLength(20)]
         public string Name { get; set; }
 
-        [StringLength(100)]
         public string Remark { get; set; }
+
+        public IList<Permission> Permissions { get; set; }
     }
 }
