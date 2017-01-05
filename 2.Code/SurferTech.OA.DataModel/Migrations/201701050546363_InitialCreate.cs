@@ -8,6 +8,19 @@ namespace SurferTech.OA.DataModel.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Pages",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(unicode: false),
+                        Controller = c.String(unicode: false),
+                        Action = c.String(unicode: false),
+                        Group = c.String(unicode: false),
+                        IsDefault = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Permissions",
                 c => new
                     {
@@ -87,6 +100,7 @@ namespace SurferTech.OA.DataModel.Migrations
             DropTable("dbo.Users");
             DropTable("dbo.Roles");
             DropTable("dbo.Permissions");
+            DropTable("dbo.Pages");
         }
     }
 }

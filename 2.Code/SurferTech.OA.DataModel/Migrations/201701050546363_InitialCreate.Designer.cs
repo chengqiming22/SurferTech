@@ -13,7 +13,7 @@ namespace SurferTech.OA.DataModel.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201701050350498_InitialCreate"; }
+            get { return "201701050546363_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
