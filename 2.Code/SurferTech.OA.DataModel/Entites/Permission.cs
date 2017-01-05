@@ -5,7 +5,7 @@ namespace SurferTech.OA.DataModel.Entites
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class Permission
+    public class Permission
     {
         public int Id { get; set; }
 

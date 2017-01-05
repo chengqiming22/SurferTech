@@ -5,7 +5,7 @@ namespace SurferTech.OA.DataModel.Entites
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
-    public partial class User
+    public class User
     {
         public int Id { get; set; }
 
@@ -32,6 +32,6 @@ namespace SurferTech.OA.DataModel.Entites
         [StringLength(100)]
         public string Remark { get; set; }
 
-        public virtual IList<Role> Roles { get; set; }
+        public List<Role> Roles { get; set; }
     }
 }
