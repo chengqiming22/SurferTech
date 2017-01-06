@@ -11,8 +11,11 @@ namespace SurferTech.OA.DataAccess.Dao
     {
         public User GetUser(string uid,string pwd)
         {
-            var user = db.Users.FirstOrDefault(u => u.UID == uid && u.Password == pwd && u.IsActive);
-            return user;
+            using (var db = new OADbContext())
+            {
+                var user = db.Users.FirstOrDefault(u => u.UID == uid && u.Password == pwd && u.IsActive);
+                return user;
+            }
         }
     }
 }

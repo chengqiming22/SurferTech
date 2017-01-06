@@ -8,11 +8,12 @@ namespace SurferTech.OA.DataAccess
     using SurferTech.OA.DataModel.Entites;
 
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
-    public class OADbContext : DbContext
+    class OADbContext : DbContext
     {
         public OADbContext()
             : base("name=OADbContext")
         {
+            
         }
 
         public virtual DbSet<Permission> Permissions { get; set; }

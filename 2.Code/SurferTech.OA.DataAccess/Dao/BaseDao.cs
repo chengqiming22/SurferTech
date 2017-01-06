@@ -8,6 +8,6 @@ namespace SurferTech.OA.DataAccess.Dao
 {
     public class BaseDao<T> where T : class
     {
-        protected OADbContext db = new OADbContext();
+
     }
 }

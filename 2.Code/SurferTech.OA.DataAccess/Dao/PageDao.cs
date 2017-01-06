@@ -11,18 +11,21 @@ namespace SurferTech.OA.DataAccess.Dao
     {
         public List<Page> GetPagesByUID(string uid)
         {
-            var user = db.Users.Include("Roles").FirstOrDefault(u => u.UID == uid);
-            if (user == null)
-                return null;
-            var pageIds = new List<long>();
-            foreach(var role in user.Roles)
+            using (var db = new OADbContext())
             {
-                db.Entry(role).Collection(r => r.Permissions).Load();
-                pageIds.AddRange(db.Permissions.Select(p => p.ResourceId));
+                var user = db.Users.Include("Roles").FirstOrDefault(u => u.UID == uid);
+                if (user == null)
+                    return null;
+                var pageIds = new List<long>();
+                foreach (var role in user.Roles)
+                {
+                    db.Entry(role).Collection(r => r.Permissions).Load();
+                    pageIds.AddRange(db.Permissions.Select(p => p.ResourceId));
+                }
+                pageIds = pageIds.Distinct().ToList();
+                var pages = db.Pages.Include("Group").Where(p => pageIds.Contains(p.Id)).ToList();
+                return pages;
             }
-            pageIds = pageIds.Distinct().ToList();
-            var pages = db.Pages.Include("Group").Where(p => pageIds.Contains(p.Id)).ToList();
-            return pages;
         }
     }
 }
