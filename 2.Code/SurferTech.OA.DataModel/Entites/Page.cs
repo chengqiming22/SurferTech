@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -24,10 +25,9 @@ namespace SurferTech.OA.DataModel.Entites
         public string Action { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string Group { get; set; }
-
-        [Required]
         public bool IsDefault { get; set; }
+
+        [JsonIgnore]
+        public PageGroup Group { get; set; }
     }
 }

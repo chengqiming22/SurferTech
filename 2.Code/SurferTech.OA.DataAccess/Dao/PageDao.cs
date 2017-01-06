@@ -21,7 +21,7 @@ namespace SurferTech.OA.DataAccess.Dao
                 pageIds.AddRange(db.Permissions.Select(p => p.ResourceId));
             }
             pageIds = pageIds.Distinct().ToList();
-            var pages = db.Pages.Where(p => pageIds.Contains(p.Id)).ToList();
+            var pages = db.Pages.Include("Group").Where(p => pageIds.Contains(p.Id)).ToList();
             return pages;
         }
     }

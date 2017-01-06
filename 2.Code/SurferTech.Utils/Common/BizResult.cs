@@ -11,6 +11,17 @@ namespace SurferTech.Utils.Common
         public int Code { get; set; }
         public string Message { get; set; }
 
+        public BizResult()
+        {
+
+        }
+
+        public BizResult(int code, string msg)
+        {
+            this.Code = code;
+            this.Message = msg;
+        }
+
         public void SetCodeAndMessage(int code,string msg)
         {
             Code = code;

@@ -114,7 +114,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Accounts\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -135,9 +134,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,6 +185,12 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SurferTech.OA.DataAccess\SurferTech.OA.DataAccess.csproj">
       <Project>{e43de672-0d60-43e2-aac7-49cbf57ccf04}</Project>
       <Name>SurferTech.OA.DataAccess</Name>
@@ -195,16 +199,14 @@
       <Project>{9cfda726-3500-4cab-840e-1ac4b325feb7}</Project>
       <Name>SurferTech.OA.DataModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SurferTech.OA.ServiceContract\SurferTech.OA.ServiceContract.csproj">
+      <Project>{ab0a31ae-865f-4198-b74b-1460198f7df1}</Project>
+      <Name>SurferTech.OA.ServiceContract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SurferTech.Utils\SurferTech.Utils.csproj">
       <Project>{e4063386-cc86-4810-903e-4ce4f9d22461}</Project>
       <Name>SurferTech.Utils</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

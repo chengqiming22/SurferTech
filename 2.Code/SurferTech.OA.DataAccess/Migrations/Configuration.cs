@@ -18,9 +18,14 @@ namespace SurferTech.OA.DataAccess.Migrations
         protected override void Seed(OADbContext context)
         {
             context.Pages.AddOrUpdate(p => p.Name,
-                new Page { Name = "项目管理", Controller = "Project", Action = "Index", Group = "项目管理", IsDefault = true },
-                new Page { Name = "人员管理", Controller = "Employee", Action = "Index", Group = "人员管理", IsDefault = true },
-                new Page { Name = "财务管理", Controller = "Finance", Action = "Index", Group = "财务管理", IsDefault = true });
+                new Page { Name = "项目管理", Controller = "Project", Action = "Index", IsDefault = true },
+                new Page { Name = "人员管理", Controller = "Employee", Action = "Index", IsDefault = true },
+                new Page { Name = "财务管理", Controller = "Finance", Action = "Index", IsDefault = true });
+
+            context.PageGroups.AddOrUpdate(g => g.Name,
+                new PageGroup { Name = "项目管理" },
+                new PageGroup { Name = "人员管理" },
+                new PageGroup { Name = "财务管理" });
 
             context.Users.AddOrUpdate(u => u.UID,
                 new User { UID = "admin", Password = "123456", IsActive = true });
@@ -29,6 +34,10 @@ namespace SurferTech.OA.DataAccess.Migrations
                 new Role { Name = "系统管理员" });
 
             context.SaveChanges();
+
+            context.PageGroups.Include("Pages").First(g => g.Name == "项目管理").Pages = new List<Page> { context.Pages.First(p => p.Name == "项目管理") };
+            context.PageGroups.Include("Pages").First(g => g.Name == "人员管理").Pages = new List<Page> { context.Pages.First(p => p.Name == "人员管理") };
+            context.PageGroups.Include("Pages").First(g => g.Name == "财务管理").Pages = new List<Page> { context.Pages.First(p => p.Name == "财务管理") };
 
             context.Permissions.AddOrUpdate(p => p.ResourceId,
                 new Permission { Type = (short)PermissionType.Page, ResourceId = context.Pages.First(c => c.Name == "项目管理").Id, IsActive = true },
