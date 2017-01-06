@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.Utils", "SurferTech.Utils\SurferTech.Utils.csproj", "{E4063386-CC86-4810-903E-4CE4F9D22461}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.OA.ServiceProxy", "SurferTech.OA.ServiceProxy\SurferTech.OA.ServiceProxy.csproj", "{0078888C-A999-4D12-BD86-23A6EF3E9229}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{BD57F49F-0C68-4AA6-BBBB-507FEFC4BDD7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.OA.Client", "SurferTech.OA.Client\SurferTech.OA.Client.csproj", "{FA821743-1B4C-4261-A08D-940EB7827737}"
@@ -29,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.OA.DataAccess", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.OA.ServiceContract", "SurferTech.OA.ServiceContract\SurferTech.OA.ServiceContract.csproj", "{AB0A31AE-865F-4198-B74B-1460198F7DF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.OA.ServiceClient", "SurferTech.OA.ServiceClient\SurferTech.OA.ServiceClient.csproj", "{0078888C-A999-4D12-BD86-23A6EF3E9229}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurferTech.OA.ServiceClient.Tests", "SurferTech.OA.ServiceClient.Tests\SurferTech.OA.ServiceClient.Tests.csproj", "{9B575D91-AD57-4E4A-989F-4ACD3FA0CA68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,10 +41,6 @@ Global
 		{E4063386-CC86-4810-903E-4CE4F9D22461}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4063386-CC86-4810-903E-4CE4F9D22461}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4063386-CC86-4810-903E-4CE4F9D22461}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0078888C-A999-4D12-BD86-23A6EF3E9229}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0078888C-A999-4D12-BD86-23A6EF3E9229}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0078888C-A999-4D12-BD86-23A6EF3E9229}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0078888C-A999-4D12-BD86-23A6EF3E9229}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FA821743-1B4C-4261-A08D-940EB7827737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FA821743-1B4C-4261-A08D-940EB7827737}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA821743-1B4C-4261-A08D-940EB7827737}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -83,6 +81,14 @@ Global
 		{AB0A31AE-865F-4198-B74B-1460198F7DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB0A31AE-865F-4198-B74B-1460198F7DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB0A31AE-865F-4198-B74B-1460198F7DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0078888C-A999-4D12-BD86-23A6EF3E9229}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0078888C-A999-4D12-BD86-23A6EF3E9229}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0078888C-A999-4D12-BD86-23A6EF3E9229}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0078888C-A999-4D12-BD86-23A6EF3E9229}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B575D91-AD57-4E4A-989F-4ACD3FA0CA68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B575D91-AD57-4E4A-989F-4ACD3FA0CA68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B575D91-AD57-4E4A-989F-4ACD3FA0CA68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B575D91-AD57-4E4A-989F-4ACD3FA0CA68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,5 +97,6 @@ Global
 		{3A918E83-F277-4A95-BF8D-9B673A127248} = {BD57F49F-0C68-4AA6-BBBB-507FEFC4BDD7}
 		{11D0E1D1-F0C9-46C2-8B8A-29EA8AB77CF2} = {BD57F49F-0C68-4AA6-BBBB-507FEFC4BDD7}
 		{013E7E2D-E41C-4F7D-A057-C09CFE871451} = {BD57F49F-0C68-4AA6-BBBB-507FEFC4BDD7}
+		{9B575D91-AD57-4E4A-989F-4ACD3FA0CA68} = {BD57F49F-0C68-4AA6-BBBB-507FEFC4BDD7}
 	EndGlobalSection
 EndGlobal
