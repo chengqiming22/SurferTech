@@ -8,7 +8,7 @@ namespace SurferTech.OA.ServiceContract.Models
 {
     public class UserQueryModel
     {
-        public string UID { get; set; }
+        public string UserName { get; set; }
         public string Email { get; set; }
     }
 }

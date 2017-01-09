@@ -9,11 +9,20 @@ namespace SurferTech.OA.DataAccess.Dao
 {
     public class UserDao : BaseDao<User>
     {
-        public User GetUser(string uid,string pwd)
+        public User GetUser(string userName)
         {
             using (var db = new OADbContext())
             {
-                var user = db.Users.FirstOrDefault(u => u.UID == uid && u.Password == pwd && u.IsActive);
+                var user = db.Users.FirstOrDefault(u => u.UserName == userName && u.IsActive);
+                return user;
+            }
+        }
+
+        public User GetUser(int userId)
+        {
+            using (var db = new OADbContext())
+            {
+                var user = db.Users.FirstOrDefault(u => u.Id == userId && u.IsActive);
                 return user;
             }
         }

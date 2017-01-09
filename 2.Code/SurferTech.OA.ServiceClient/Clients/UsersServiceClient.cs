@@ -10,9 +10,14 @@ namespace SurferTech.OA.ServiceClient.Clients
 {
     public class UsersServiceClient : ServiceClientBase
     {
-        public async Task<BizResult<UserModel>> Login(LoginModel loginModel)
+        public async Task<BizResult<UserModel>> GetUser(string userName)
         {
-            return await Post<BizResult<UserModel>>("api/login", loginModel);
+            return await Get<BizResult<UserModel>>(string.Format("api/users?userName={0}", userName));
+        }
+
+        public async Task<BizResult<UserModel>> GetUser(int userId)
+        {
+            return await Get<BizResult<UserModel>>(string.Format("api/users/{0}", userId));
         }
     }
 }

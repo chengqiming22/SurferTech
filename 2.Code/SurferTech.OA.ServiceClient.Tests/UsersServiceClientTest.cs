@@ -11,14 +11,17 @@ namespace SurferTech.OA.ServiceClient.Tests
         private UsersServiceClient client = new UsersServiceClient();
 
         [TestMethod]
-        public void TestLogin()
+        public void TestGetUserByUserName()
         {
-            var loginModel = new LoginModel
-            {
-                UID = "admin",
-                Password = "123456"
-            };
-            var result = client.Login(loginModel);
+            var result = client.GetUser("admin");
+            result.Wait();
+            Assert.IsNotNull(result.Result);
+        }
+
+        [TestMethod]
+        public void TestGetUserByUserId()
+        {
+            var result = client.GetUser(1);
             result.Wait();
             Assert.IsNotNull(result.Result);
         }

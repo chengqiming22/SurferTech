@@ -83,7 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -93,9 +92,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SurferTech.OA.Web\SurferTech.OA.Web.csproj">
-      <Project>{06BB2050-6342-4F78-B1B5-C196060B9F39}</Project>
+      <Project>{06bb2050-6342-4f78-b1b5-c196060b9f39}</Project>
       <Name>SurferTech.OA.Web</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

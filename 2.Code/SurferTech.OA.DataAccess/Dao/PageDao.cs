@@ -9,11 +9,11 @@ namespace SurferTech.OA.DataAccess.Dao
 {
     public class PageDao:BaseDao<Page>
     {
-        public List<Page> GetPagesByUID(string uid)
+        public List<Page> GetPagesByUserName(string userName)
         {
             using (var db = new OADbContext())
             {
-                var user = db.Users.Include("Roles").FirstOrDefault(u => u.UID == uid);
+                var user = db.Users.Include("Roles").FirstOrDefault(u => u.UserName == userName);
                 if (user == null)
                     return null;
                 var pageIds = new List<long>();
