@@ -10,7 +10,7 @@ namespace SurferTech.OA.Web.Controllers
     public class ProjectController : Controller
     {
         [Route("")]
-        // GET: Project
+        [Authorize]
         public ActionResult Index()
         {
             return View();

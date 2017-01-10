@@ -24,16 +24,13 @@
                 </button>
                 @Html.ActionLink(navTitle, "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
-            <p class="navbar-text navbar-right">
-                <a href="#">你好，admin</a>
-            </p>
+            <div class="navbar-collapse collapse">
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
     </div>
-    <div class="navbar navbar-default menu-content">
-        <div class="navbar-collapse collapse container">           
-             @Html.Partial("_NavMenu")
-        </div>
-    </div>
+    @Html.Partial("_NavMenu")
+    
     <div class="container body-content">
         @RenderBody()
     </div>

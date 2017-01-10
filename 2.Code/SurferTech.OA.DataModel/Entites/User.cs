@@ -14,7 +14,7 @@ namespace SurferTech.OA.DataModel.Entites
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(100)]
         public string Password { get; set; }
 
         [Required]
@@ -32,6 +32,6 @@ namespace SurferTech.OA.DataModel.Entites
         [StringLength(100)]
         public string Remark { get; set; }
 
-        public List<Role> Roles { get; set; }
+        public UserGroup Group { get; set; }
     }
 }

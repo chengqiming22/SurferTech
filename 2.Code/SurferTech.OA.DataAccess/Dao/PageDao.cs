@@ -1,4 +1,5 @@
 ﻿using SurferTech.OA.DataModel.Entites;
+using SurferTech.OA.DataModel.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,20 +8,21 @@ using System.Threading.Tasks;
 
 namespace SurferTech.OA.DataAccess.Dao
 {
-    public class PageDao:BaseDao<Page>
+    public class PageDao : BaseDao<Page>
     {
         public List<Page> GetPagesByUserName(string userName)
         {
             using (var db = new OADbContext())
             {
-                var user = db.Users.Include("Roles").FirstOrDefault(u => u.UserName == userName);
-                if (user == null)
+                var user = db.Users.Include("Group").FirstOrDefault(u => u.UserName == userName);
+                if (user == null || user.Group == null)
                     return null;
                 var pageIds = new List<long>();
-                foreach (var role in user.Roles)
+                db.Entry(user.Group).Collection(g => g.Roles).Load();
+                foreach (var role in user.Group.Roles)
                 {
                     db.Entry(role).Collection(r => r.Permissions).Load();
-                    pageIds.AddRange(db.Permissions.Select(p => p.ResourceId));
+                    pageIds.AddRange(role.Permissions.Where(p => p.Type == (short)PermissionType.Page).Select(p => p.ResourceId));
                 }
                 pageIds = pageIds.Distinct().ToList();
                 var pages = db.Pages.Include("Group").Where(p => pageIds.Contains(p.Id)).ToList();

@@ -13,11 +13,12 @@ namespace SurferTech.OA.DataAccess
         public OADbContext()
             : base("name=OADbContext")
         {
-            
+
         }
 
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<PageGroup> PageGroups { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
@@ -25,7 +26,8 @@ namespace SurferTech.OA.DataAccess
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasMany(r => r.Permissions).WithMany();
-            modelBuilder.Entity<User>().HasMany(u => u.Roles).WithMany();
+            modelBuilder.Entity<UserGroup>().HasMany(u => u.Roles).WithMany();
+            modelBuilder.Entity<UserGroup>().HasMany(u => u.Users).WithOptional(g => g.Group);
             modelBuilder.Entity<PageGroup>().HasMany(g => g.Pages).WithOptional(p => p.Group).WillCascadeOnDelete();
         }
     }

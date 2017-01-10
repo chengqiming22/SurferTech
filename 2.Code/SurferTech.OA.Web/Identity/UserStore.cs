@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SurferTech.Utils.Common;
+using SurferTech.OA.ServiceContract.Models;
 
 namespace SurferTech.OA.Web.Identity
 {
@@ -20,7 +21,7 @@ namespace SurferTech.OA.Web.Identity
 
         public Task CreateAsync(IdentityUser user)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(0);
         }
 
         public Task DeleteAsync(IdentityUser user)
@@ -30,14 +31,14 @@ namespace SurferTech.OA.Web.Identity
 
         public async Task<IdentityUser> FindByIdAsync(int userId)
         {
-            var result = await new UsersServiceClient().GetUser(userId);
-            return result.Code == 0 && result.ResultObject != null ? result.ResultObject.ConvertTo<IdentityUser>() : null;
+            var result = await new UsersServiceClient().GetUserAsync(userId);
+            return result.Code == 0 && result.ReturnObject != null ? result.ReturnObject.ConvertTo<IdentityUser>() : null;
         }
 
         public async Task<IdentityUser> FindByNameAsync(string userName)
         {
-            var result = await new UsersServiceClient().GetUser(userName);
-            return result.Code == 0 && result.ResultObject != null ? result.ResultObject.ConvertTo<IdentityUser>() : null;
+            var result = await new UsersServiceClient().GetUserAsync(userName);
+            return result.Code == 0 && result.ReturnObject != null ? result.ReturnObject.ConvertTo<IdentityUser>() : null;
         }
 
         public Task UpdateAsync(IdentityUser user)
@@ -60,12 +61,12 @@ namespace SurferTech.OA.Web.Identity
 
         public Task<int> GetAccessFailedCountAsync(IdentityUser user)
         {
-            return Task.FromResult<int>(0);
+            return Task.FromResult(0);
         }
 
         public Task<bool> GetLockoutEnabledAsync(IdentityUser user)
         {
-            return Task.FromResult<bool>(false);
+            return Task.FromResult(false);
         }
 
         public Task<DateTimeOffset> GetLockoutEndDateAsync(IdentityUser user)
@@ -85,7 +86,7 @@ namespace SurferTech.OA.Web.Identity
 
         public Task SetLockoutEnabledAsync(IdentityUser user, bool enabled)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(0);
         }
 
         public Task SetLockoutEndDateAsync(IdentityUser user, DateTimeOffset lockoutEnd)
@@ -102,7 +103,7 @@ namespace SurferTech.OA.Web.Identity
             if (user == null)
                 throw new ArgumentNullException("user");
 
-            return Task.FromResult<string>(new PasswordHasher().HashPassword(user.Password));
+            return Task.FromResult(user.Password);
         }
 
         public Task<bool> HasPasswordAsync(IdentityUser user)
@@ -112,7 +113,11 @@ namespace SurferTech.OA.Web.Identity
 
         public Task SetPasswordHashAsync(IdentityUser user, string passwordHash)
         {
-            throw new NotImplementedException();
+            if (user == null)
+                throw new ArgumentNullException("user");
+
+            user.Password = passwordHash;
+            return Task.FromResult(0);
         }
 
         #endregion
@@ -121,7 +126,7 @@ namespace SurferTech.OA.Web.Identity
 
         public Task<bool> GetTwoFactorEnabledAsync(IdentityUser user)
         {
-            return Task.FromResult<bool>(false);
+            return Task.FromResult(false);
         }
 
         public Task SetTwoFactorEnabledAsync(IdentityUser user, bool enabled)

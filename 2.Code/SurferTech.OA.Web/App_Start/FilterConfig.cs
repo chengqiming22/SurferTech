@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using SurferTech.OA.Web.Filters;
+using System.Web;
 using System.Web.Mvc;
 
 namespace SurferTech.OA.Web
@@ -7,7 +8,9 @@ namespace SurferTech.OA.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            filters.Add(new AuthenticatedFilterAttribute());
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new AuthorizeAttribute());
         }
     }
 }

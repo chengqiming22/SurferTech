@@ -16,6 +16,8 @@ namespace SurferTech.OA.Web.Identity
 
         public string Password { get; set; }
 
+        public string Email { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<IdentityUser, int> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

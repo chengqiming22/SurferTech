@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SurferTech.OA.ServiceClient.Clients;
 using SurferTech.OA.ServiceContract.Models;
+using System.Threading.Tasks;
 
 namespace SurferTech.OA.ServiceClient.Tests
 {
@@ -11,19 +12,24 @@ namespace SurferTech.OA.ServiceClient.Tests
         private UsersServiceClient client = new UsersServiceClient();
 
         [TestMethod]
-        public void TestGetUserByUserName()
+        public async Task TestGetUserByUserName()
         {
-            var result = client.GetUser("admin");
-            result.Wait();
-            Assert.IsNotNull(result.Result);
+            var result = await client.GetUserAsync("admin");
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void TestGetUserByUserId()
+        public async Task TestGetUserByUserId()
         {
-            var result = client.GetUser(1);
-            result.Wait();
-            Assert.IsNotNull(result.Result);
+            var result = await client.GetUserAsync(1);
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestGetPagesByUserName()
+        {
+            var result = client.GetPagesByUserName("admin");
+            Assert.IsNotNull(result);
         }
     }
 }

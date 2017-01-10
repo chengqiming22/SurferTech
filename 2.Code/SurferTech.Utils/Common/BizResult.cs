@@ -37,6 +37,6 @@ namespace SurferTech.Utils.Common
 
     public class BizResult<T> : BizResult
     {
-        public T ResultObject { get; set; }
+        public T ReturnObject { get; set; }
     }
 }

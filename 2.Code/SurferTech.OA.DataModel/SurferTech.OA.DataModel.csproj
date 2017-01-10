@@ -50,6 +50,7 @@
     <Compile Include="Entites\Permission.cs" />
     <Compile Include="Entites\Role.cs" />
     <Compile Include="Entites\User.cs" />
+    <Compile Include="Entites\UserGroup.cs" />
     <Compile Include="Enums\PermissionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -27,6 +27,9 @@ namespace SurferTech.OA.DataAccess.Migrations
                 new PageGroup { Name = "人员管理" },
                 new PageGroup { Name = "财务管理" });
 
+            context.UserGroups.AddOrUpdate(u => u.Name,
+                new UserGroup { Name = "admin", Remark="超级管理员" });
+
             context.Users.AddOrUpdate(u => u.UserName,
                 new User { UserName = "admin", Password = "123456", IsActive = true });
 
@@ -48,7 +51,8 @@ namespace SurferTech.OA.DataAccess.Migrations
 
             context.Roles.Include("Permissions").First(r => r.Name == "系统管理员").Permissions = context.Permissions.ToList();
 
-            context.Users.Include("Roles").First(u => u.UserName == "admin").Roles = context.Roles.ToList();
+            context.UserGroups.Include("Roles").First(u => u.Name == "admin").Roles = context.Roles.ToList();
+            context.UserGroups.Include("Users").First(u => u.Name == "admin").Users = context.Users.ToList();
 
             context.SaveChanges();
         }

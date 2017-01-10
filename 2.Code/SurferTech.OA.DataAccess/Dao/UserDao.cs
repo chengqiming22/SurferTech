@@ -9,6 +9,15 @@ namespace SurferTech.OA.DataAccess.Dao
 {
     public class UserDao : BaseDao<User>
     {
+        public bool CreateUser(User user)
+        {
+            using (var db = new OADbContext())
+            {
+                db.Entry(user).State = System.Data.Entity.EntityState.Added;
+                return db.SaveChanges() > 0;
+            }
+        }
+
         public User GetUser(string userName)
         {
             using (var db = new OADbContext())

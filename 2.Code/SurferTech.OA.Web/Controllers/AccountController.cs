@@ -8,6 +8,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using SurferTech.OA.Web.Models;
+using SurferTech.OA.ServiceClient.Clients;
+using SurferTech.Utils.Common;
+using SurferTech.OA.ServiceContract.Models;
 
 namespace SurferTech.OA.Web.Controllers
 {
@@ -19,7 +22,6 @@ namespace SurferTech.OA.Web.Controllers
         public AccountController()
         {
         }
-
         public AccountController(IdentityUserManager userManager, IdentitySignInManager signInManager)
         {
             UserManager = userManager;
@@ -37,7 +39,6 @@ namespace SurferTech.OA.Web.Controllers
                 _signInManager = value;
             }
         }
-
         public IdentityUserManager UserManager
         {
             get
@@ -67,9 +68,7 @@ namespace SurferTech.OA.Web.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe,shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -85,13 +84,63 @@ namespace SurferTech.OA.Web.Controllers
             }
         }
 
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser { UserName = model.UserName, Email = model.Email };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    var createResult = await new UsersServiceClient().CreateUserAsync(user.ConvertTo<UserModel>());
+                    if (createResult.Code != 0)
+                    {
+                        ModelState.AddModelError("", "创建用户失败：" + createResult.Message);
+                        return View(model);
+                    }
+                    else
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                AddErrors(result);
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Logout()
+        {
+            var authManager = HttpContext.GetOwinContext().Authentication;
+            authManager.SignOut();
+            return await Task.FromResult(RedirectToLocal(""));
+        }
+
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Project");
+            return RedirectToAction("Index", "Home");
         }
-	}
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+        }
+    }
 }

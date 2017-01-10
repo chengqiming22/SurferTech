@@ -21,11 +21,12 @@ namespace SurferTech.OA.Web
                 return IdentityUserManager.Create(options, context);
             });
             app.CreatePerOwinContext<IdentitySignInManager>(IdentitySignInManager.Create);
-
+            
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
+                LogoutPath = new PathString("/Account/Logout"),
                 Provider = new CookieAuthenticationProvider
                 {
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<IdentityUserManager, IdentityUser, int>(
