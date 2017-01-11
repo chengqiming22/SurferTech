@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace SurferTech.OA.DataModel.Entites
 {
-    public class Page
+    public class Page : EntityBase
     {
-        public int Id { get; set; }
-
         [Required]
         [StringLength(20)]
         public string Name { get; set; }

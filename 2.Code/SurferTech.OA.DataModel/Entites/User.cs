@@ -4,11 +4,9 @@ namespace SurferTech.OA.DataModel.Entites
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    
-    public class User
-    {
-        public int Id { get; set; }
 
+    public class User : EntityBase
+    {
         [Required]
         [StringLength(20)]
         public string UserName { get; set; }

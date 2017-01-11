@@ -5,10 +5,8 @@ namespace SurferTech.OA.DataModel.Entites
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Role
+    public class Role : EntityBase
     {
-        public int Id { get; set; }
-
         [Required]
         [StringLength(20)]
         public string Name { get; set; }

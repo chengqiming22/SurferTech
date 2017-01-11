@@ -7,18 +7,30 @@ using System.Web.Mvc;
 
 namespace SurferTech.OA.Web.Filters
 {
-    public class AuthenticatedFilterAttribute : ActionFilterAttribute 
+    public class AuthenticatedFilterAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var controller = filterContext.Controller;
-            var user = filterContext.HttpContext.User;
-            if (user.Identity.IsAuthenticated)
+            var identity = filterContext.HttpContext.User.Identity;
+            if (identity.IsAuthenticated)
             {
-                var result = new UsersServiceClient().GetPagesByUserName(user.Identity.Name);
-                if (result.Code == 0)
+                var service = new UsersServiceClient();
+                var getUserResult = service.GetUser(identity.Name);
+                if (getUserResult.Code == 0 && getUserResult.ReturnObject != null)
                 {
-                    controller.ViewBag.PageGroups = result.ReturnObject;
+                    var result = new UsersServiceClient().GetPagesByUserName(identity.Name);
+                    if (result.Code == 0)
+                    {
+                        controller.ViewBag.PageGroups = result.ReturnObject;
+                    }
+                }
+                else
+                {
+                    var authManager = HttpContext.Current.GetOwinContext().Authentication;
+                    authManager.SignOut();
+                    filterContext.Result = new RedirectResult("~/Account/Login");
+                    return;
                 }
             }
             base.OnActionExecuting(filterContext);

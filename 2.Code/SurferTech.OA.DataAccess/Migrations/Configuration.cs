@@ -28,10 +28,10 @@ namespace SurferTech.OA.DataAccess.Migrations
                 new PageGroup { Name = "财务管理" });
 
             context.UserGroups.AddOrUpdate(u => u.Name,
-                new UserGroup { Name = "admin", Remark="超级管理员" });
+                new UserGroup { Name = "admin", Remark = "超级管理员" });
 
             context.Users.AddOrUpdate(u => u.UserName,
-                new User { UserName = "admin", Password = "123456", IsActive = true });
+                new User { UserName = "admin", Password = "AMz+TNtYabPVsjjLdeZ12squCMZubtjeUKt7TJmOjFay6XIqK+3lZwHFE42IC6o74w==", IsActive = true });
 
             context.Roles.AddOrUpdate(r => r.Name,
                 new Role { Name = "系统管理员" });
@@ -46,6 +46,13 @@ namespace SurferTech.OA.DataAccess.Migrations
                 new Permission { Type = (short)PermissionType.Page, ResourceId = context.Pages.First(c => c.Name == "项目管理").Id, IsActive = true },
                 new Permission { Type = (short)PermissionType.Page, ResourceId = context.Pages.First(c => c.Name == "人员管理").Id, IsActive = true },
                 new Permission { Type = (short)PermissionType.Page, ResourceId = context.Pages.First(c => c.Name == "财务管理").Id, IsActive = true });
+
+            context.Projects.AddOrUpdate(p => p.Name,
+                new Project { Name = "一号线施工", StartDate = new DateTime(2015, 12, 18), Cooperator = "上海市政府", Status = 0, Remark = "上海轨道交通1号线（Metro Line 1 of Shanghai）是上海的第一条地铁， 亦为上海轨道交通最为繁忙、最重要的大动脉，由上海地铁第一运营有限公司负责运营。 该线于1993年1月10日建成南段（锦江乐园站至徐家汇站）上行线，于1993年5月28日开始试运营； 此后先后开通南段线路、南延伸段、北延伸段、北北延伸段。" },
+                new Project { Name = "市政府大楼", StartDate = new DateTime(2015, 3, 15), Cooperator = "上海市政府", Status = 3 },
+                new Project { Name = "江苏路下水道改造施工", StartDate = new DateTime(2015, 6, 5), Cooperator = "上海市政府", Status = 2, },
+                new Project { Name = "五号线施工", StartDate = new DateTime(2013, 4, 11), Cooperator = "上海市政府", Status = 4 },
+                new Project { Name = "十四号线施工", StartDate = new DateTime(2016, 12, 12), Cooperator = "上海市政府", Status = 1 });
 
             context.SaveChanges();
 

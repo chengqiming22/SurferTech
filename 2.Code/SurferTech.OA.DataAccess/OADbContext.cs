@@ -23,6 +23,8 @@ namespace SurferTech.OA.DataAccess
         public virtual DbSet<PageGroup> PageGroups { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
 
+        public virtual DbSet<Project> Projects { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasMany(r => r.Permissions).WithMany();

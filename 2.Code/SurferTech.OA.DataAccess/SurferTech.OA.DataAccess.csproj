@@ -56,11 +56,28 @@
     <Compile Include="Dao\BaseDao.cs" />
     <Compile Include="Dao\PageDao.cs" />
     <Compile Include="Dao\PermissionDao.cs" />
+    <Compile Include="Dao\ProjectDao.cs" />
     <Compile Include="Dao\RoleDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Migrations\201701100858228_InitialCreate.cs" />
     <Compile Include="Migrations\201701100858228_InitialCreate.Designer.cs">
       <DependentUpon>201701100858228_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701110539113_InitialProject.cs" />
+    <Compile Include="Migrations\201701110539113_InitialProject.Designer.cs">
+      <DependentUpon>201701110539113_InitialProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701110705253_ModifyProject.cs" />
+    <Compile Include="Migrations\201701110705253_ModifyProject.Designer.cs">
+      <DependentUpon>201701110705253_ModifyProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701110753121_ChangeProjectPropertyType.cs" />
+    <Compile Include="Migrations\201701110753121_ChangeProjectPropertyType.Designer.cs">
+      <DependentUpon>201701110753121_ChangeProjectPropertyType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701110759466_ChangeProjectPropertyType2.cs" />
+    <Compile Include="Migrations\201701110759466_ChangeProjectPropertyType2.Designer.cs">
+      <DependentUpon>201701110759466_ChangeProjectPropertyType2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OADbContext.cs" />
@@ -82,6 +99,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201701100858228_InitialCreate.resx">
       <DependentUpon>201701100858228_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701110539113_InitialProject.resx">
+      <DependentUpon>201701110539113_InitialProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701110705253_ModifyProject.resx">
+      <DependentUpon>201701110705253_ModifyProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701110753121_ChangeProjectPropertyType.resx">
+      <DependentUpon>201701110753121_ChangeProjectPropertyType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701110759466_ChangeProjectPropertyType2.resx">
+      <DependentUpon>201701110759466_ChangeProjectPropertyType2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,17 +7,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace SurferTech.OA.Service.Controllers
 {
     [RoutePrefix("api/users")]
-    public class UsersController : ApiController
+    public class UsersController : BaseController
     {
-        public BizResult<UserModel> Post(UserModel userModel)
+        public async Task<BizResult<UserModel>> Post(UserModel userModel)
         {
-            var result = new BizResult<UserModel>();
-            try
+            return await InvokeWithCatchAsync(() =>
             {
                 if (userModel == null)
                 {
@@ -26,84 +26,54 @@ namespace SurferTech.OA.Service.Controllers
 
                 var user = userModel.ConvertTo<User>();
                 user.IsActive = true;
-                if (!new UserDao().CreateUser(user))
+                if (!new UserDao().Create(user))
                 {
                     throw new BizException(-1, "创建用户失败");
                 }
-                result.ReturnObject = user.ConvertTo<UserModel>();
-            }
-            catch (BizException ex)
-            {
-                result.SetCodeAndMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                result.SetCodeAndMessage(-1, ex.Message);
-            }
-            return result;
+                return user.ConvertTo<UserModel>();
+            });
         }
 
-        public BizResult<UserModel> Get(int id)
+        public async Task<BizResult<UserModel>> Get(int id)
         {
-            var result = new BizResult<UserModel>();
-            try
+            return await InvokeWithCatchAsync(() =>
             {
                 if (id <= 0)
                 {
                     throw new BizException(-1, "用户Id不能为空");
                 }
 
-                var user = new UserDao().GetUser(id);
-                if (user == null)
+                var user = new UserDao().Get(id);
+                if (user == null || !user.IsActive)
                 {
                     throw new BizException(-1, "根据用户Id【{0}】未查询到用户信息", id);
                 }
-                result.ReturnObject = user.ConvertTo<UserModel>();
-            }
-            catch (BizException ex)
-            {
-                result.SetCodeAndMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                result.SetCodeAndMessage(-1, ex.Message);
-            }
-            return result;
+                return user.ConvertTo<UserModel>();
+            });
         }
 
-        public BizResult<UserModel> Get(string userName)
+        public async Task<BizResult<UserModel>> Get(string userName)
         {
-            var result = new BizResult<UserModel>();
-            try
+            return await InvokeWithCatchAsync(() =>
             {
                 if (string.IsNullOrWhiteSpace(userName))
                 {
                     throw new BizException(-1, "用户名不能为空");
                 }
 
-                var user = new UserDao().GetUser(userName);
+                var user = new UserDao().Get(userName);
                 if (user == null)
                 {
                     throw new BizException(-1, "根据用户名【{0}】未查询到用户信息", userName);
                 }
-                result.ReturnObject = user.ConvertTo<UserModel>();
-            }
-            catch (BizException ex)
-            {
-                result.SetCodeAndMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                result.SetCodeAndMessage(-1, ex.Message);
-            }
-            return result;
+                return user.ConvertTo<UserModel>();
+            });
         }
 
         [Route("{userName}/pages")]
-        public BizResult<List<PageGroupModel>> GetPagesByUserName(string userName)
+        public async Task<BizResult<List<PageGroupModel>>> GetPagesByUserName(string userName)
         {
-            var result = new BizResult<List<PageGroupModel>>();
-            try
+            return await InvokeWithCatchAsync(() =>
             {
                 if (string.IsNullOrWhiteSpace(userName))
                 {
@@ -123,17 +93,8 @@ namespace SurferTech.OA.Service.Controllers
                     group.DefaultPage = g.Pages.FirstOrDefault(p => p.IsDefault).ConvertTo<PageModel>();
                     groups.Add(group);
                 }
-                result.ReturnObject = groups;
-            }
-            catch (BizException ex)
-            {
-                result.SetCodeAndMessage(ex);
-            }
-            catch (Exception ex)
-            {
-                result.SetCodeAndMessage(-1, ex.Message);
-            }
-            return result;
+                return groups;
+            });
         }
     }
 }

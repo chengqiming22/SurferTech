@@ -5,10 +5,8 @@ namespace SurferTech.OA.DataModel.Entites
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Permission
+    public class Permission : EntityBase
     {
-        public int Id { get; set; }
-
         [Required]
         public short Type { get; set; }
 
